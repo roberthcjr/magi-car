@@ -12,3 +12,27 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Cars {
+  id        Int        @id @default(autoincrement())
+  model     String
+  brand     String
+  Cars_info Cars_info?
+}
+
+model Cars_info {
+  id           Int      @id @default(autoincrement())
+  color        String?
+  release_year DateTime
+  used_meters  Int
+  price        Int
+  status       Status   @default(AVAILABLE)
+  car          Cars     @relation(fields: [carId], references: [id])
+  carId        Int      @unique
+}
+
+enum Status {
+  AVAILABLE
+  NEGOCIATING
+  SOLD
+}
