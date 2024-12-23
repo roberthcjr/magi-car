@@ -15,14 +15,14 @@ datasource db {
 
 model Cars {
   id        Int        @id @default(autoincrement())
-  model     String
-  brand     String
+  model     String     @db.VarChar(50)
+  brand     String     @db.VarChar(50)
   Cars_info Cars_info?
 }
 
 model Cars_info {
   id           Int      @id @default(autoincrement())
-  color        String?
+  color        String?  @db.VarChar(50)
   release_year DateTime
   used_meters  Int
   price        Int
