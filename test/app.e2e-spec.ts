@@ -19,6 +19,34 @@ describe('AppController (e2e)', () => {
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
-      .expect('Hello World!');
+      .expect('Hello Cars!');
+  });
+
+  it('/cars (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/')
+      .expect(200)
+      .expect('Content-Type', /json/);
+  });
+
+  it('/cars/{id:1} (GET)', () => {
+    const idToBeRequested = 1;
+    return request(app.getHttpServer())
+      .get(`/cars/${idToBeRequested}`)
+      .expect(200)
+      .expect('Content-Type', /json/);
+  });
+
+  it('/cars (POST)', () => {
+    const newCarTest = {
+      model: 'Teste',
+      brand: 'Teste',
+    };
+    return request(app.getHttpServer())
+      .post('/cars')
+      .send(newCarTest)
+      .expect(201)
+      .expect('Content-Type', /json/)
+      .expect(newCarTest);
   });
 });

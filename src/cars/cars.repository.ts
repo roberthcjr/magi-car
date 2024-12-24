@@ -11,6 +11,11 @@ type QueryType = {
   orderBy?: Prisma.CarsOrderByWithRelationInput;
 };
 
+type UpdateType = {
+  where: Prisma.CarsWhereUniqueInput;
+  data: Prisma.CarsUpdateInput;
+};
+
 @Injectable()
 export class CarsRepository {
   constructor(private prisma: PrismaService) {}
@@ -37,6 +42,14 @@ export class CarsRepository {
   async createCar(data: Prisma.CarsCreateInput): Promise<Cars> {
     return this.prisma.cars.create({
       data,
+    });
+  }
+
+  async updateCar(params: UpdateType): Promise<Car> {
+    const { where, data } = params;
+    return this.prisma.cars.update({
+      data,
+      where,
     });
   }
 }

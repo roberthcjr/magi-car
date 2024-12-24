@@ -33,7 +33,10 @@ export class CarsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCarDto: UpdateCarDto) {
+  update(
+    @Param('id', ParseIntPipe) id: string,
+    @Body(ValidationPipe) updateCarDto: UpdateCarDto,
+  ) {
     return this.carsService.update(+id, updateCarDto);
   }
 
