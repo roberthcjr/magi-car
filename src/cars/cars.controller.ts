@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { UpdateCarDto } from './dto/update-car.dto';
@@ -27,7 +28,7 @@ export class CarsController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Car | null> {
+  async findOne(@Param('id', ParseIntPipe) id: string): Promise<Car | null> {
     return this.carsService.findOne(Number(id));
   }
 
