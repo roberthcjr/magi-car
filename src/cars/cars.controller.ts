@@ -8,17 +8,17 @@ import {
   Delete,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
-import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { Car } from './entities/car.entity';
+import { ValidationPipe } from 'src/pipes/validation.pipe';
 
 @Controller('cars')
 export class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
   @Post()
-  create(@Body() createCarDto: CreateCarDto) {
-    return this.carsService.create(createCarDto);
+  create(@Body(ValidationPipe) newCar: Car) {
+    return this.carsService.create(newCar);
   }
 
   @Get()

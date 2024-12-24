@@ -2,13 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { CarsRepository } from './cars.repository';
+import { Car } from './entities/car.entity';
 
 @Injectable()
 export class CarsService {
   constructor(private repository: CarsRepository) {}
 
-  create(createCarDto: CreateCarDto) {
-    return this.repository.createCar(createCarDto);
+  create(newCar: Car) {
+    return this.repository.createCar(newCar);
   }
 
   findAll() {
