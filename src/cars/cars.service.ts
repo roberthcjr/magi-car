@@ -12,7 +12,7 @@ export class CarsService {
   }
 
   findAll() {
-    return `This action returns all cars`;
+    return this.repository.cars({});
   }
 
   findOne(id: number) {
