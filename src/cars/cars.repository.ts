@@ -3,7 +3,7 @@ import { Cars, Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Car } from './entities/car.entity';
 
-type QueryType = {
+type GetAllType = {
   skip?: number;
   take?: number;
   cursor?: Prisma.CarsWhereUniqueInput;
@@ -28,7 +28,7 @@ export class CarsRepository {
     });
   }
 
-  async cars(params: QueryType): Promise<Car[]> {
+  async cars(params: GetAllType): Promise<Car[]> {
     const { skip, take, cursor, where, orderBy } = params;
     return this.prisma.cars.findMany({
       skip,
