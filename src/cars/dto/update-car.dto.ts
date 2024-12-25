@@ -1,10 +1,10 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsOptional, IsString } from 'class-validator';
 
 export class UpdateCarDto {
-  @IsNumber()
-  id: number;
   @IsString()
+  @IsOptional()
   model?: string;
   @IsString()
+  @IsOptional()
   brand?: string;
 }
