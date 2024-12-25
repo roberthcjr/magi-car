@@ -52,4 +52,10 @@ export class CarsRepository {
       where,
     });
   }
+
+  async deleteCar(where: Prisma.CarsWhereUniqueInput) {
+    return this.prisma.cars.delete({
+      where,
+    });
+  }
 }

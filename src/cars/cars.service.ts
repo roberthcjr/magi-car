@@ -24,6 +24,6 @@ export class CarsService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} car`;
+    return this.repository.deleteCar({ id });
   }
 }
