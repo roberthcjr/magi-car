@@ -11,7 +11,7 @@ import {
 import { CarsService } from './cars.service';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { Car } from './entities/car.entity';
-import { ValidationPipe } from 'src/pipes/validation.pipe';
+import { ValidationPipe } from '../pipes/validation.pipe';
 
 @Controller('cars')
 export class CarsController {
